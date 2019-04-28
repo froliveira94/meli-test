@@ -1,0 +1,62 @@
+@import "./../../theme/variables";
+
+.list-product {
+  background-color: $white;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.list-product-item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid $gray;
+  padding: 16px 0;
+  position: relative;
+  cursor: pointer;
+
+  &:first-child {
+    padding: 0 0 16px 0;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+    padding: 16px 0 0 0;
+  }
+
+  .item-image {
+    width: 180px;
+    height: 180px;
+    border-radius: $border-radius;
+  }
+
+  .item-content {
+    margin: 16px 0 0 16px;
+    display: flex;
+    flex-direction: column;
+
+    .item-price {
+      margin-bottom: 32px;
+
+      .item-currency,
+      .item-value {
+        color: $black;
+        font-size: 20px;
+      }
+    }
+
+    .item-short-description {
+      font-size: 18px;
+      color: $black;
+      width: 383px;
+    }
+  }
+  .item-location {
+    color: $silver;
+    margin-top: 32px;
+    font-size: 12px;
+    position: absolute;
+    right: 72px;
+  }
+}

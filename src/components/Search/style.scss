@@ -1,0 +1,37 @@
+@import "./../../theme/variables";
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  background-color: $yellow;
+}
+
+.search-container .search-box {
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 26px;
+}
+
+.search-box .search-box-input {
+  width: 860px;
+  height: 38px;
+  border: 0;
+  border-radius: $border-radius 0 0 $border-radius;
+  padding: 0 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: $silver;
+}
+
+.search-box .search-box-button {
+  border: 0;
+  width: 42px;
+  background-color: $gray;
+  border-radius: 0 $border-radius $border-radius 0;
+  background-image: url("./../../assets/img/ic_Search.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}

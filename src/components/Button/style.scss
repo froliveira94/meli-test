@@ -1,0 +1,17 @@
+@import "./../../theme/variables";
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 43px;
+  border-radius: $border-radius;
+  border: 0;
+  width: 100%;
+  font-size: 14px;
+
+  &.btn-primary {
+    background-color: $blue;
+    color: $white;
+  }
+}
