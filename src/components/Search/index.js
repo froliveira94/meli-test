@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 //Style
 import "./style.scss";
@@ -10,13 +11,9 @@ class Search extends Component {
   render() {
     return (
       <section className="search-container">
-        <a
-          href="http://www.mercadolivre.com.br"
-          title="Mercado Livre"
-          target="_blank"
-        >
+        <Link to="/">
           <img src={logo} alt="Mercado Livre" />
-        </a>
+        </Link>
         <div className="search-box">
           <input
             type="text"

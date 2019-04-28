@@ -1,12 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
-//Screens
-import Home from "./screens/Home";
+//Navigation
+import Navigation from "./navigation";
 
 function App() {
-  return <Home />;
+  return <Navigation />;
 }
 
 export default App;
