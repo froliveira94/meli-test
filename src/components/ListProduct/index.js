@@ -12,9 +12,6 @@ class ListProduct extends Component {
       <div>
         <section className="list-product">
           <ListProductItem />
-          <ListProductItem />
-          <ListProductItem />
-          <ListProductItem />
         </section>
       </div>
     );
