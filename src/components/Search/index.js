@@ -1,22 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+//Libs
+import { observer, inject } from "mobx-react";
+
 //Style
 import "./style.scss";
 
 //Image
 import logo from "./../../assets/img/Logo_ML.png";
-
+@inject("search", "product")
+@observer
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ""
+      searchTerm: props.search.searchTerm
     };
   }
   _handleClick = () => {
     const { searchTerm } = this.state;
+    const {
+      search: { setSearchTerm },
+      product: { getAll }
+    } = this.props;
+    setSearchTerm(searchTerm);
+    getAll(searchTerm);
     this.props.history.push(`/items?q=${searchTerm}`);
+  };
+  _handleChange = term => {
+    this.setState({ searchTerm: term });
   };
   render() {
     const { searchTerm } = this.state;
@@ -31,7 +44,7 @@ class Search extends Component {
             className="search-box-input"
             placeholder="Nunca dejes de buscar"
             value={searchTerm}
-            onChange={e => this.setState({ searchTerm: e.target.value })}
+            onChange={e => this._handleChange(e.target.value)}
           />
           <button
             className="search-box-button"

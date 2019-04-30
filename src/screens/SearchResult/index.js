@@ -6,36 +6,41 @@ import Breadcrumb from "./../../components/Breadcrumb";
 import Container from "./../../components/Container";
 import ListProduct from "./../../components/ListProduct";
 
+//Libs
+import { observer, inject } from "mobx-react";
+@inject("product", "search")
+@observer
 class SearchResult extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-      categories: []
-    };
-  }
-
   componentDidMount() {
-    const items = [];
-    fetch(`http://localhost:3002/items?q=iphone`).then(function(response) {
-      if (response.ok) {
-        return response.json().then(data => {
-          return data;
-        });
-        console.log("response", response);
-      }
-    });
-    this.setState({ items: items });
-  }
+    const {
+      product: { data, getAll },
+      search: { setSearchTerm }
+    } = this.props;
 
+    if (!data.lengh) {
+      const term = this.props.location.search.substr(
+        3,
+        this.props.location.search.length
+      );
+      setSearchTerm(term);
+      getAll(term);
+    }
+  }
   render() {
-    const { items } = this.state;
+    const {
+      history,
+      product: { data, isFetchingAll, categories }
+    } = this.props;
     return (
       <div>
-        <Search />
+        <Search history={history} />
         <Container>
-          <Breadcrumb />
-          <ListProduct />
+          <Breadcrumb categories={categories} />
+          {!isFetchingAll && data.length !== 0 ? (
+            <ListProduct data={data} />
+          ) : (
+            <div>Loading...</div>
+          )}
         </Container>
       </div>
     );
