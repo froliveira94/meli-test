@@ -5,6 +5,7 @@ import Search from "./../../components/Search";
 import Breadcrumb from "./../../components/Breadcrumb";
 import Container from "./../../components/Container";
 import ListProduct from "./../../components/ListProduct";
+import Loading from "./../../components/Loading";
 
 //Libs
 import { observer, inject } from "mobx-react";
@@ -39,7 +40,7 @@ class SearchResult extends Component {
           {!isFetchingAll && data.length !== 0 ? (
             <ListProduct data={data} />
           ) : (
-            <div>Loading...</div>
+            <Loading />
           )}
         </Container>
       </div>
