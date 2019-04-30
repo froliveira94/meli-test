@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 //Style
 import "./style.scss";
@@ -6,16 +6,12 @@ import "./style.scss";
 //Components
 import ListProductItem from "./ListProductItem";
 
-class ListProduct extends Component {
-  render() {
-    return (
-      <div>
-        <section className="list-product">
-          <ListProductItem />
-        </section>
-      </div>
-    );
-  }
-}
+const ListProduct = ({ data }) => (
+  <div>
+    <section className="list-product">
+      <ListProductItem data={data} />
+    </section>
+  </div>
+);
 
 export default ListProduct;

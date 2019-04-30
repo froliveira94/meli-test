@@ -1,26 +1,49 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import * as CurrencyFormat from "react-currency-format";
+
+//Helper
+import { getMask } from "./../../theme/helper";
+
+//Currency
+import { currency } from "./../../theme/currency";
+
+//Image
+import free_shipping from "./../../assets/img/ic_shipping.png";
 
 //Style
 import "./style.scss";
 
-const ListProductItem = () => (
-  <div className="list-product-item">
-    <img
-      className="item-image"
-      src="http://mla-s2-p.mlstatic.com/699369-MLA29856491152_042019-I.jpg"
-      alt=""
-    />
-    <div className="item-content">
-      <div className="item-price">
-        <span className="item-currency">$</span>
-        <span className="item-value">1.980</span>
+const ListProductItem = ({ data }) =>
+  data.map(item => (
+    <Link key={item.id} to={`/items/${item.id}`} className="list-product-item">
+      <img className="item-image" src={item.picture} alt="" />
+      <div className="item-content">
+        <div className="item-price">
+          <span className="item-value">
+            <CurrencyFormat
+              value={item.price.amount}
+              displayType={"text"}
+              thousandSeparator={true}
+              format={`${currency[item.price.currency]}  ${getMask(
+                item.price.amount
+              )}`}
+              renderText={value => (
+                <p>
+                  {value}
+                  <span className="item-decimal">
+                    {item.price.decimal ? item.price.decimal.toString() : "00"}
+                  </span>
+                </p>
+              )}
+            />
+          </span>
+          {item.free_shipping && <img src={free_shipping} alt="Frete Grátis" />}
+        </div>
+        <p className="item-short-description">{item.title}</p>
       </div>
-      <p className="item-short-description">
-        Apple Iphone Se 64gb 12mpx 4 Originales + Garantía Apple
-      </p>
-    </div>
-    <span className="item-location">Capital Federal</span>
-  </div>
-);
+      <span className="item-location">{item.state_name}</span>
+    </Link>
+  ));
 
 export default ListProductItem;

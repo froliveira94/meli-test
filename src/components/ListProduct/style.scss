@@ -37,12 +37,24 @@
     flex-direction: column;
 
     .item-price {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       margin-bottom: 32px;
+
+      .item-value {
+        margin-right: 10px;
+      }
 
       .item-currency,
       .item-value {
         color: $black;
         font-size: 20px;
+      }
+      .item-decimal {
+        font-size: 12px;
+        vertical-align: top;
+        line-height: normal;
       }
     }
 
