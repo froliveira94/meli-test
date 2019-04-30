@@ -31,6 +31,11 @@ class Search extends Component {
   _handleChange = term => {
     this.setState({ searchTerm: term });
   };
+  _keyPress = e => {
+    if (e.keyCode == 13) {
+      this._handleClick();
+    }
+  };
   render() {
     const { searchTerm } = this.state;
     return (
@@ -45,6 +50,7 @@ class Search extends Component {
             placeholder="Nunca dejes de buscar"
             value={searchTerm}
             onChange={e => this._handleChange(e.target.value)}
+            onKeyDown={this._keyPress}
           />
           <button
             className="search-box-button"
