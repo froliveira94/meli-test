@@ -17,7 +17,9 @@ import "./style.scss";
 const ListProductItem = ({ data }) =>
   data.map(item => (
     <Link key={item.id} to={`/items/${item.id}`} className="list-product-item">
-      <img className="item-image" src={item.picture} alt="" />
+      <figure className="item-image">
+        <img src={item.picture} alt={item.title} />
+      </figure>
       <div className="item-content">
         <div className="item-price">
           <span className="item-value">

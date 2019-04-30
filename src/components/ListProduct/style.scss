@@ -28,7 +28,14 @@
   .item-image {
     width: 180px;
     height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: $border-radius;
+    overflow: hidden;
+    img {
+      max-width: 100%;
+    }
   }
 
   .item-content {
